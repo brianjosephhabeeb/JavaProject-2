@@ -2,6 +2,7 @@ package com.tournament.marchmadnesspredictor.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,22 +29,17 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
-    // step1
 
-    /**
-     * We use the PasswordEncoder that is defined in the Spring Security configuration to encode the password. * @return
-     */
+
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // step2
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // only allowed urls without JWT
         http.authorizeRequests().antMatchers(
-                        "/auth/users/", "/auth/users/login/", "/auth/users/register/", "/api/hello-world/").permitAll()
+                        "/auth/users/", "/auth/users/login/", "/auth/users/register/").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -56,7 +52,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    // fetching data for user for authentication
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(myUserDetailsService);
@@ -68,6 +63,4 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         return (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
     }
-
-
 }

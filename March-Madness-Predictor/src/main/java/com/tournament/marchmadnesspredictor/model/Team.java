@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "teams")   // create a new table called categories
+@Table(name = "teams")   // create a new table called teams
 public class Team {
 
     @Id // @Id means primary key

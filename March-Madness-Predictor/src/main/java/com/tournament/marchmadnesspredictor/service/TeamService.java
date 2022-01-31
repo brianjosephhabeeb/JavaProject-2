@@ -118,16 +118,7 @@ public class TeamService {
         }
         return team.getTeamWeightedMetricsList();
     }
-//    public List<Recipe> getCategoryRecipes(Long categoryId) {
-//        MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
-//                .getPrincipal();
-//        Category category = categoryRepository.findByIdAndUserId(categoryId, userDetails.getUser().getId());
-//        if (category == null) {
-//            throw new InformationNotFoundException("category with id " + categoryId + " " +
-//                    "not belongs to this user or category does not exist.");
-//        }
-//        return category.getRecipeList();
-//    }
+
     public TeamWeightedMetrics getTeamWeightedMetrics(Long teamId, Long twmId) {
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
