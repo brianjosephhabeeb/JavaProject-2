@@ -1,6 +1,6 @@
 package com.tournament.marchmadnesspredictor.security;
 
-import com.food.recipes.model.User;
+import com.tournament.marchmadnesspredictor.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
