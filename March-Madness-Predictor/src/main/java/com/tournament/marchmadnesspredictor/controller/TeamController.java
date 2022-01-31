@@ -42,14 +42,14 @@ public class TeamController {
         return teamService.updateTeam(teamId, teamObject);
     }
 
-    @DeleteMapping("/teeam/{teamId}")
+    @DeleteMapping("/team/{teamId}")
     public Optional<Team> deleteteam(@PathVariable(value = "teamId") Long teamId) {
         System.out.println("calling delete team");
         return teamService.deleteTeam(teamId);
     }
 
     @PostMapping("/team/{teamId}/twm/")
-    public TeamWeightedMetrics createCategoryRecipe(@PathVariable(value = "teamId")Long teamId, @RequestBody TeamWeightedMetrics teamWeightedMetricsObject){
+    public TeamWeightedMetrics createTeamWeightedMetrics(@PathVariable(value = "teamId")Long teamId, @RequestBody TeamWeightedMetrics teamWeightedMetricsObject){
         System.out.println("calling createTeamWeightedMetrics");
         return teamService.createTeamService(teamId, teamWeightedMetricsObject);
     }

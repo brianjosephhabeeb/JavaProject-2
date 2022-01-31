@@ -20,7 +20,7 @@ public class Team {
     private String name;
 
     @Column
-    private String description;
+    private Integer rank;
 
     public User getUser() {
         return user;
@@ -51,10 +51,10 @@ public class Team {
     public Team() {
     }
 
-    public Team(Long id, String name, String description) {
+    public Team(Long id, String name, int rank) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.rank = rank;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Team {
         return "Team{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", rank='" + rank + '\'' +
                 '}';
     }
 
@@ -82,12 +82,12 @@ public class Team {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public int getRank() {
+        return rank;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
 }

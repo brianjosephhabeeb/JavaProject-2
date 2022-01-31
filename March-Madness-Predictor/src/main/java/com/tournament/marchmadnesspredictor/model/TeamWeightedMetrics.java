@@ -62,7 +62,7 @@ public class TeamWeightedMetrics {
                 '}';
     }
 
-    public TeamWeightedMetrics(Long id, String name, String time, Integer attributes, Boolean isPublic) {
+    public TeamWeightedMetrics(Long id, String name, Integer attributes, Boolean isPublic) {
         this.id = id;
         this.name = name;
         this.attributes = attributes;

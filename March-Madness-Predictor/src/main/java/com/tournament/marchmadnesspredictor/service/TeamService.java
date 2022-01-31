@@ -72,8 +72,8 @@ public class TeamService {
         if (team == null) {
             throw new InformationNotFoundException("team with id " + teamId + " not found");
         } else {
-            team.setDescription(teamObject.getDescription());
             team.setName(teamObject.getName());
+            team.setRank(teamObject.getRank());
             team.setUser(userDetails.getUser());
             return teamRepository.save(team);
         }
