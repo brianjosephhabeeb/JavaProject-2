@@ -29,8 +29,8 @@ public class TeamController {
     }
 
     @PostMapping("/teams/")
-    public Team creatTeam(@RequestBody Team teamObject){
-        return teamService.crdatTeam(teamObject);
+    public Team createTeam(@RequestBody Team teamObject){
+        return teamService.createTeam(teamObject);
     }
 
     @GetMapping("/teams/{teamId}/")
