@@ -4,14 +4,11 @@ import com.tournament.marchmadnesspredictor.exceptions.InformationExistException
 import com.tournament.marchmadnesspredictor.exceptions.InformationNotFoundException;
 import com.tournament.marchmadnesspredictor.model.Team;
 import com.tournament.marchmadnesspredictor.model.TeamWeightedMetrics;
-import com.tournament.marchmadnesspredictor.model.Team;
-import com.tournament.marchmadnesspredictor.model.TeamWeightedMetrics;
 import com.tournament.marchmadnesspredictor.repository.TeamRepository;
 import com.tournament.marchmadnesspredictor.repository.TeamWeightedMetricsRepository;
 import com.tournament.marchmadnesspredictor.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.tournament.marchmadnesspredictor.beans.factory.annotation.Autowired;
-import org.tournament.marchmadnesspredictor.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -71,12 +68,12 @@ public class TeamService {
         System.out.println("service calling updateTeam ==>");
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
-        Team category = teamRepository.findByIdAndUserId(teamId, userDetails.getUser().getId());
+        Team team = teamRepository.findByIdAndUserId(teamId, userDetails.getUser().getId());
         if (team == null) {
             throw new InformationNotFoundException("team with id " + teamId + " not found");
         } else {
             team.setDescription(teamObject.getDescription());
-            team.setName(categoryObject.getName());
+            team.setName(teamObject.getName());
             team.setUser(userDetails.getUser());
             return teamRepository.save(team);
         }
@@ -102,8 +99,8 @@ public class TeamService {
             throw new InformationNotFoundException(
                     "team with id " + teamId + " does not belong to this user or team does not exist.");
         }
-        TeamWeightedMetrics recipe = teamWeightedMetricsRepository.findByNameAndUserId(teamWeightedMetricsObject.getName(), userDetails.getUser().getId());
-        if (recipe != null) {
+        TeamWeightedMetrics teamWeightedMetrics = teamWeightedMetricsRepository.findByNameAndUserId(teamWeightedMetricsObject.getName(), userDetails.getUser().getId());
+        if (teamWeightedMetrics != null) {
             throw new InformationExistException("team weighted metrics with name " + teamWeightedMetrics.getName() + " already exists.");
         }
         teamWeightedMetricsObject.setUser(userDetails.getUser());
@@ -121,7 +118,16 @@ public class TeamService {
         }
         return team.getTeamWeightedMetricsList();
     }
-
+//    public List<Recipe> getCategoryRecipes(Long categoryId) {
+//        MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
+//                .getPrincipal();
+//        Category category = categoryRepository.findByIdAndUserId(categoryId, userDetails.getUser().getId());
+//        if (category == null) {
+//            throw new InformationNotFoundException("category with id " + categoryId + " " +
+//                    "not belongs to this user or category does not exist.");
+//        }
+//        return category.getRecipeList();
+//    }
     public TeamWeightedMetrics getTeamWeightedMetrics(Long teamId, Long twmId) {
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
@@ -145,7 +151,7 @@ public class TeamService {
             TeamWeightedMetrics teamWeightedMetrics = (teamWeightedMetricsRepository.findByTeamId(
                     teamId).stream().filter(p -> p.getId().equals(twmId)).findFirst()).get();
             teamWeightedMetrics.setName(teamWeightedMetricsObject.getName());
-            teamWeightedMetrics.setAttribute(teamWeightedMetricsObject.getAttribute());
+            teamWeightedMetrics.setAttributes(teamWeightedMetricsObject.getAttributes());
             teamWeightedMetrics.setPublic(teamWeightedMetricsObject.isPublic());
             return teamWeightedMetricsRepository.save(teamWeightedMetrics);
         } catch (InformationNotFoundException e) {
@@ -163,7 +169,7 @@ public class TeamService {
         }
     }
 
-
     public TeamWeightedMetrics createTeamService(Long teamId, TeamWeightedMetrics teamWeightedMetricsObject) {
+        return teamWeightedMetricsObject;
     }
 }

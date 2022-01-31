@@ -2,7 +2,6 @@ package com.tournament.marchmadnesspredictor.controller;
 
 import com.tournament.marchmadnesspredictor.model.Team;
 import com.tournament.marchmadnesspredictor.model.TeamWeightedMetrics;
-import com.tournament.marchmadnesspredictor.TeamService;
 import com.tournament.marchmadnesspredictor.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

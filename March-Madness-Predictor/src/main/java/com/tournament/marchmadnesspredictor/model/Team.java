@@ -40,11 +40,11 @@ public class Team {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<TeamWeightedMetrics> teamWeightedMetricsList;
 
-    public List<TeamWeightedMetrics> getteamWeightedMetricsList() {
+    public List<TeamWeightedMetrics> getTeamWeightedMetricsList() {
         return teamWeightedMetricsList;
     }
 
-    public void setteamWeightedMetricsList(List<TeamWeightedMetrics> teamWeightedMetricsList) {
+    public void setTeamWeightedMetricsList(List<TeamWeightedMetrics> teamWeightedMetricsList) {
         this.teamWeightedMetricsList = teamWeightedMetricsList;
     }
 
@@ -89,4 +89,5 @@ public class Team {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
