@@ -1,7 +1,7 @@
 package com.tournament.marchmadnesspredictor.security;
 
-import com.food.recipes.model.User;
-import com.food.recipes.service.UserService;
+import com.tournament.marchmadnesspredictor.model.User;
+import com.tournament.marchmadnesspredictor.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,5 +27,4 @@ public class MyUserDetailsService implements UserDetailsService {
 
 
 }
-public class MyUserDetailsService {
-}
+
