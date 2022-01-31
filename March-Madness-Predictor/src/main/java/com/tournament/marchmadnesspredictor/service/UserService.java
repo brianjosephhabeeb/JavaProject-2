@@ -57,4 +57,5 @@ public class UserService {
         String JWT = jwtUtils.generateToken(userDetails);
         return ResponseEntity.ok(new LoginResponse(JWT));
     }
+
 }
