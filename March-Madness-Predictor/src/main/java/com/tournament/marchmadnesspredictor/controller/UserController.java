@@ -1,6 +1,6 @@
 package com.tournament.marchmadnesspredictor.controller;
 
-mport com.tournament.marchmadnesspredictor.model.Request.LoginRequest;
+import com.tournament.marchmadnesspredictor.model.Request.LoginRequest;
 import com.tournament.marchmadnesspredictor.model.User;
 import com.tournament.marchmadnesspredictor.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

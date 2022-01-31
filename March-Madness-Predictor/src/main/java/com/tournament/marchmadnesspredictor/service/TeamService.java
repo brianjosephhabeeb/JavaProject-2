@@ -2,12 +2,12 @@ package com.tournament.marchmadnesspredictor.service;
 
 import com.tournament.marchmadnesspredictor.exceptions.InformationExistException;
 import com.tournament.marchmadnesspredictor.exceptions.InformationNotFoundException;
-import com.tournament.marchmadnesspredictor.model.Category;
-import com.tournament.marchmadnesspredictor.model.Recipe;
 import com.tournament.marchmadnesspredictor.model.Team;
 import com.tournament.marchmadnesspredictor.model.TeamWeightedMetrics;
-import com.tournament.marchmadnesspredictor.repository.CategoryRepository;
-import com.tournament.marchmadnesspredictor.repository.RecipeRepository;
+import com.tournament.marchmadnesspredictor.model.Team;
+import com.tournament.marchmadnesspredictor.model.TeamWeightedMetrics;
+import com.tournament.marchmadnesspredictor.repository.TeamRepository;
+import com.tournament.marchmadnesspredictor.repository.TeamWeightedMetricsRepository;
 import com.tournament.marchmadnesspredictor.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.tournament.marchmadnesspredictor.beans.factory.annotation.Autowired;
@@ -25,11 +25,11 @@ public class TeamService {
         this.teamRepository = teamRepository;
     }
 
-    private TeamWeightedMetricsRepository teamWeightedMetricsRepositoryRepository;
+    private TeamWeightedMetricsRepository teamWeightedMetricsRepository;
 
     @Autowired
     public void setTeamWeightedMetricsRepository(TeamWeightedMetricsRepository recipeRepository){
-        this.recipeRepository = recipeRepository;
+        this.teamWeightedMetricsRepository = teamWeightedMetricsRepository;
     }
 
     public List<Team> getAllTeams(){
