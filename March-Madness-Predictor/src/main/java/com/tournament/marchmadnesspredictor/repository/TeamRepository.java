@@ -1,6 +1,5 @@
 package com.tournament.marchmadnesspredictor.repository;
 
-import com.tournament.marchmadnesspredictor.model.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

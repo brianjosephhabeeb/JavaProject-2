@@ -2,7 +2,6 @@ package com.tournament.marchmadnesspredictor.service;
 
 import com.tournament.marchmadnesspredictor.exceptions.InformationExistException;
 import com.tournament.marchmadnesspredictor.exceptions.InformationNotFoundException;
-import com.tournament.marchmadnesspredictor.model.Team;
 import com.tournament.marchmadnesspredictor.repository.TeamRepository;
 import com.tournament.marchmadnesspredictor.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
