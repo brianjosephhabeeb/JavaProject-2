@@ -11,31 +11,24 @@ public class Game {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+   private Long id;
 
     @Column
-    private Integer gameNumber;
+    private String teamName;
 
-    @Column
-    private Integer teams;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserProfile userProfile;
 
-    @Column
-    private Integer teamRank;
+    @OneToOne
+    @JoinColumn(name = "result_id")
+    private Result result;
 
-    @OneToMany
-    @JoinTable(name = "user_selection",
-            joinColumns = {@JoinColumn(name = "game_id")},
-            inverseJoinColumns = @JoinColumn(name = "user_selection_id"))
-    @JsonIgnore
-    private Integer userSelection;
-
-
-    public Game(Long id, Integer gameNumber, Integer teams, Integer teamRank, Integer userSelection) {
+    public Game(Long id, String teamName, UserProfile userProfile, Result result) {
         this.id = id;
-        this.gameNumber = gameNumber;
-        this.teams = teams;
-        this.teamRank = teamRank;
-        this.userSelection = userSelection;
+        this.teamName = teamName;
+        this.userProfile = userProfile;
+        this.result = result;
     }
 
     public Game() {
@@ -49,35 +42,27 @@ public class Game {
         this.id = id;
     }
 
-    public Integer getGameNumber() {
-        return gameNumber;
+    public String getTeamName() {
+        return teamName;
     }
 
-    public void setGameNumber(Integer gameNumber) {
-        this.gameNumber = gameNumber;
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 
-    public Integer getTeams() {
-        return teams;
+    public UserProfile getUserProfile() {
+        return userProfile;
     }
 
-    public void setTeams(Integer teams) {
-        this.teams = teams;
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 
-    public Integer getUserSelection() {
-        return userSelection;
+    public Result getResult() {
+        return result;
     }
 
-    public void setUserSelection(Integer userSelection) {
-        this.userSelection = userSelection;
-    }
-
-    public Integer getTeamRank() {
-        return teamRank;
-    }
-
-    public void setTeamRank(Integer teamRank) {
-        this.teamRank = teamRank;
+    public void setResult(Result result) {
+        this.result = result;
     }
 }
