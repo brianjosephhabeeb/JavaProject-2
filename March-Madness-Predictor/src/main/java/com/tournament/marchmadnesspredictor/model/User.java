@@ -1,11 +1,11 @@
 package com.tournament.marchmadnesspredictor.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+//import org.hibernate.annotations.LazyCollection;
+//import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.List;
+//import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -37,32 +37,6 @@ public class User {
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
     }
-
-    public List<Team> getTeamList() {
-        return teamList;
-    }
-
-    public void setTeamList(List<Team> teamList) {
-        this.teamList = teamList;
-    }
-
-    public List<TeamWeightedMetrics> getTeamWeightedMetricsList() {
-        return teamWeightedMetricsList;
-    }
-
-    public void setTeamWeightedMetricsList(List<TeamWeightedMetrics> teamWeightedMetricsList) {
-        this.teamWeightedMetricsList = teamWeightedMetricsList;
-    }
-
-    @OneToMany(mappedBy = "user")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Team> teamList;
-
-
-    @OneToMany(mappedBy = "user")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<TeamWeightedMetrics> teamWeightedMetricsList;
-
 
     public User(Long id, String userName, String emailAddress, String password) {
         this.id = id;
