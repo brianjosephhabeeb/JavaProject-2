@@ -1,10 +1,10 @@
-package com.tournament.marchmadnesspredictor.controller;
-
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-@RequestMapping
-public class UserSelectionController {
-}
+//package com.tournament.marchmadnesspredictor.controller;
+//
+//
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//@RestController
+//@RequestMapping
+//public class UserSelectionController {
+//}
