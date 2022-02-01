@@ -1,4 +1,4 @@
-package com.tournament.marchmadnesspredictor.repository;
-
-public interface ResultRepository {
-}
+//package com.tournament.marchmadnesspredictor.repository;
+//
+//public interface ResultRepository {
+//}

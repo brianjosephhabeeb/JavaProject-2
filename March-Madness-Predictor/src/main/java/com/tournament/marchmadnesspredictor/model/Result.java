@@ -51,4 +51,13 @@ public class Result {
     public void setGame(Game game) {
         this.game = game;
     }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "resultId=" + resultId +
+                ", userProfile=" + userProfile +
+                ", game=" + game +
+                '}';
+    }
 }

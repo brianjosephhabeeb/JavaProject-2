@@ -11,17 +11,17 @@ public class Game {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
+    private Long id;
 
     @Column
     private String teamName;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    @JoinColumn(name = "profile_id")
     private UserProfile userProfile;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "result_id", referencedColumnName = "id")
+    @JoinColumn(name = "result_id")
     private Result result;
 
     public Game(Long id, String teamName, UserProfile userProfile, Result result) {
@@ -62,7 +62,19 @@ public class Game {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", teamName='" + teamName + '\'' +
+                ", userProfile=" + userProfile +
+                ", result=" + result +
+                '}';
+    }
+
     public void setResult(Result result) {
         this.result = result;
     }
+
+
 }

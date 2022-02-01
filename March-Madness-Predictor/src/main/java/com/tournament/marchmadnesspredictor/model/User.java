@@ -1,11 +1,11 @@
 package com.tournament.marchmadnesspredictor.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-//import org.hibernate.annotations.LazyCollection;
-//import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-//import java.util.List;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -27,7 +27,7 @@ public class User {
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    @JoinColumn(name = "profile_id")
     private UserProfile userProfile;
 
     public UserProfile getUserProfile() {
@@ -78,5 +78,16 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", password='" + password + '\'' +
+                ", userProfile=" + userProfile +
+                '}';
     }
 }
