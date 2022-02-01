@@ -22,11 +22,10 @@ public class Game {
     @Column
     private Integer teamRank;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-    cascade = {CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name = "user_profile",
+    @OneToMany
+    @JoinTable(name = "user_selection",
             joinColumns = {@JoinColumn(name = "game_id")},
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+            inverseJoinColumns = @JoinColumn(name = "user_selection_id"))
     @JsonIgnore
     private Integer userSelection;
 

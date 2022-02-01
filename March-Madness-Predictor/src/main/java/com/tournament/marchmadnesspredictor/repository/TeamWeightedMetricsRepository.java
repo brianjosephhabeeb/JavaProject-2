@@ -1,6 +1,5 @@
 package com.tournament.marchmadnesspredictor.repository;
 
-import com.tournament.marchmadnesspredictor.model.TeamWeightedMetrics;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
