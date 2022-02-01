@@ -8,21 +8,69 @@ import javax.persistence.*;
 @Table(name = "profiles")
 public class UserProfile {
 
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String firstName;
+    private String name;
 
     @Column
-    private String lastName;
+    private String emailAddress;
 
-    @Column
-    private String profileDescription;
+    @JsonIgnore
+    @OneToOne(mappedBy = "userProfile")
+    private User user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "result_id", referencedColumnName = "id")
+    private Result result;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_selection_id", referencedColumnName = "id")
+    private Result userSelection;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "game_id", referencedColumnName = "id")
+    private Result game;
+
+    public UserProfile(Long id, String name, String emailAddress, User user, Result result, Result userSelection, Result game) {
+        this.id = id;
+        this.name = name;
+        this.emailAddress = emailAddress;
+        this.user = user;
+        this.result = result;
+        this.userSelection = userSelection;
+        this.game = game;
+    }
 
     public UserProfile() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public User getUser() {
@@ -33,48 +81,28 @@ public class UserProfile {
         this.user = user;
     }
 
-    public UserProfile(Long id, String firstName, String lastName, String profileDescription) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.profileDescription = profileDescription;
+    public Result getResult() {
+        return result;
     }
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "userProfile")
-    private User user;
-
-    public Long getId() {
-        return id;
+    public void setResult(Result result) {
+        this.result = result;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Result getUserSelection() {
+        return userSelection;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setUserSelection(Result userSelection) {
+        this.userSelection = userSelection;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Result getGame() {
+        return game;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setGame(Result game) {
+        this.game = game;
     }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getProfileDescription() {
-        return profileDescription;
-    }
-
-    public void setProfileDescription(String profileDescription) {
-        this.profileDescription = profileDescription;
-    }
-
 }
 
