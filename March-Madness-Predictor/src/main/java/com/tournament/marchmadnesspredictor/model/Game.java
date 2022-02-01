@@ -16,12 +16,12 @@ public class Game {
     @Column
     private String teamName;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private UserProfile userProfile;
 
-    @OneToOne
-    @JoinColumn(name = "result_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "result_id", referencedColumnName = "id")
     private Result result;
 
     public Game(Long id, String teamName, UserProfile userProfile, Result result) {
