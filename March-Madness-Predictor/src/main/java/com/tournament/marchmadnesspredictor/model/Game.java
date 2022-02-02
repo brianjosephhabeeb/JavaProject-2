@@ -1,7 +1,5 @@
 package com.tournament.marchmadnesspredictor.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -24,14 +22,40 @@ public class Game {
     @JoinColumn(name = "result_id")
     private Result result;
 
-    public Game(Long id, String teamName, UserProfile userProfile, Result result) {
+    @Column
+    private String HomeTeam;
+
+    @Column
+    private String AwayTeam;
+
+    public Game(Long id, String teamName, UserProfile userProfile, Result result, String homeTeam, String awayTeam) {
         this.id = id;
         this.teamName = teamName;
         this.userProfile = userProfile;
         this.result = result;
+        HomeTeam = homeTeam;
+        AwayTeam = awayTeam;
     }
 
     public Game() {
+    }
+
+
+
+    public String getHomeTeam() {
+        return HomeTeam;
+    }
+
+    public void setHomeTeam(String homeTeam) {
+        HomeTeam = homeTeam;
+    }
+
+    public String getAwayTeam() {
+        return AwayTeam;
+    }
+
+    public void setAwayTeam(String awayTeam) {
+        AwayTeam = awayTeam;
     }
 
     public Long getId() {
@@ -77,4 +101,9 @@ public class Game {
     }
 
 
+    public String getName() {
+     return teamName;
+    }
+    public void setName(String name) {
+    }
 }

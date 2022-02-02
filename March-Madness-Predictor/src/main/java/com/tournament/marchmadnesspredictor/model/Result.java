@@ -1,5 +1,6 @@
 package com.tournament.marchmadnesspredictor.model;
 
+
 import javax.persistence.*;
 
 @Entity
