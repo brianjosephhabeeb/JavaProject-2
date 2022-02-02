@@ -17,7 +17,7 @@ public class UserSelection {
     private Game game;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id")
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private UserProfile userProfile;
 
     public UserSelection(Long id, Game game, UserProfile userProfile) {
@@ -51,14 +51,5 @@ public class UserSelection {
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
-    }
-
-    @Override
-    public String toString() {
-        return "UserSelection{" +
-                "id=" + id +
-                ", game=" + game +
-                ", userProfile=" + userProfile +
-                '}';
     }
 }

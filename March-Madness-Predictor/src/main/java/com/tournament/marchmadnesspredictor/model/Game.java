@@ -1,5 +1,7 @@
 package com.tournament.marchmadnesspredictor.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,53 +11,27 @@ public class Game {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+   private Long id;
 
     @Column
     private String teamName;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id")
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private UserProfile userProfile;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "result_id")
+    @JoinColumn(name = "result_id", referencedColumnName = "id")
     private Result result;
 
-    @Column
-    private String HomeTeam;
-
-    @Column
-    private String AwayTeam;
-
-    public Game(Long id, String teamName, UserProfile userProfile, Result result, String homeTeam, String awayTeam) {
+    public Game(Long id, String teamName, UserProfile userProfile, Result result) {
         this.id = id;
         this.teamName = teamName;
         this.userProfile = userProfile;
         this.result = result;
-        HomeTeam = homeTeam;
-        AwayTeam = awayTeam;
     }
 
     public Game() {
-    }
-
-
-
-    public String getHomeTeam() {
-        return HomeTeam;
-    }
-
-    public void setHomeTeam(String homeTeam) {
-        HomeTeam = homeTeam;
-    }
-
-    public String getAwayTeam() {
-        return AwayTeam;
-    }
-
-    public void setAwayTeam(String awayTeam) {
-        AwayTeam = awayTeam;
     }
 
     public Long getId() {
@@ -86,24 +62,7 @@ public class Game {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", teamName='" + teamName + '\'' +
-                ", userProfile=" + userProfile +
-                ", result=" + result +
-                '}';
-    }
-
     public void setResult(Result result) {
         this.result = result;
-    }
-
-
-    public String getName() {
-     return teamName;
-    }
-    public void setName(String name) {
     }
 }

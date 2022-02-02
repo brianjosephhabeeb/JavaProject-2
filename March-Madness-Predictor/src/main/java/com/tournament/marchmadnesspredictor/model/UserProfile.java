@@ -25,15 +25,15 @@ public class UserProfile {
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "result_id")
+    @JoinColumn(name = "result_id", referencedColumnName = "id")
     private Result result;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_selection_id")
+    @JoinColumn(name = "user_selection_id", referencedColumnName = "id")
     private Result userSelection;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id")
+    @JoinColumn(name = "game_id", referencedColumnName = "id")
     private Result game;
 
     public UserProfile(Long id, String name, String emailAddress, User user, Result result, Result userSelection, Result game) {
@@ -103,19 +103,6 @@ public class UserProfile {
 
     public void setGame(Result game) {
         this.game = game;
-    }
-
-    @Override
-    public String toString() {
-        return "UserProfile{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
-                ", user=" + user +
-                ", result=" + result +
-                ", userSelection=" + userSelection +
-                ", game=" + game +
-                '}';
     }
 }
 
